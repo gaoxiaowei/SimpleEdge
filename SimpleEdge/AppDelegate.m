@@ -10,6 +10,7 @@
 #import "SEBrowserViewController.h"
 #import "SENavigationController.h"
 #import "SETabStorage.h"
+#import "SEUserAgent.h"
 
 @interface AppDelegate ()
 @property(nonatomic,strong) SEBrowserViewController    *rootVC;
@@ -23,6 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[SETabStorage sharedStorage]initDB];
+    [self setDefaultUserAgent];
     [self setRootVC];
     application.applicationSupportsShakeToEdit = YES;
     [application ignoreSnapshotOnNextApplicationLaunch];
@@ -70,5 +72,11 @@
     } else {
         return nav.supportedInterfaceOrientations;
     }
+}
+
+-(void)setDefaultUserAgent{
+    NSString *defaultUserAgent = [SEUserAgent browserUserAgent];
+    NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:defaultUserAgent, @"UserAgent", nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
 }
 @end

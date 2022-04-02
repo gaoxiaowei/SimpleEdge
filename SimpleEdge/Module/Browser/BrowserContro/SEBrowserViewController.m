@@ -79,8 +79,8 @@
 }
 
 - (void)tabManager:(SETabManager *)tabManager didAddTab:(SETab *)tab {
-    [self updateTabCountByTabManager:tabManager];
     tab.tabDelegate = self;
+    [self updateTabCountByTabManager:tabManager];
     [self.urlBar updateGoBackStatus:NO];
     [self.urlBar updateGoForwardStatus:NO];
     [self.tabBar updateGoBackStatus:NO];
@@ -114,6 +114,7 @@
 - (void)tab:(SETab *)tab willDeleteWebView:(SEWebView *)webView {
     [self removeKVOForWebView:webView];
     webView.UIDelegate = nil;
+    webView.navigationDelegate=nil;
     webView.scrollView.delegate = nil;
     [webView removeFromSuperview];
 }

@@ -11,10 +11,12 @@
 #import "SETabStorage.h"
 #import "UIView+ScreenShot.h"
 #import "SETabModel.h"
+#import "SEUserAgent.h"
 
 @implementation SEBrowserViewController (WebViewDelegate)
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    //webView.customUserAgent =[UserAgent browserUserAgent];
     if (navigationAction.targetFrame == nil) {
         decisionHandler(WKNavigationActionPolicyCancel);
         [webView loadRequest:navigationAction.request];

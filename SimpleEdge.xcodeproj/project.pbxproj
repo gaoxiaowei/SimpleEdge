@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5752E43ED06AD911C79D6B13 /* libPods-SimpleEdge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6474517FECC86D5E867B568 /* libPods-SimpleEdge.a */; };
+		8B1F673E27F89367006FB2F8 /* SEUserAgent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F673C27F89367006FB2F8 /* SEUserAgent.mm */; };
 		8B60497B27F737A60087E6C4 /* SEBrowserViewController+Cookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60497A27F737A60087E6C4 /* SEBrowserViewController+Cookie.m */; };
 		8B60497E27F737D10087E6C4 /* SEBrowserViewController+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60497D27F737D10087E6C4 /* SEBrowserViewController+Safe.m */; };
 		8B60498127F737DF0087E6C4 /* SEBrowserViewController+AdBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60498027F737DF0087E6C4 /* SEBrowserViewController+AdBlock.m */; };
@@ -67,6 +68,8 @@
 
 /* Begin PBXFileReference section */
 		5DE3F05CB6BAE4CFB3AFEE5A /* Pods-SimpleEdge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleEdge.release.xcconfig"; path = "Target Support Files/Pods-SimpleEdge/Pods-SimpleEdge.release.xcconfig"; sourceTree = "<group>"; };
+		8B1F673C27F89367006FB2F8 /* SEUserAgent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SEUserAgent.mm; sourceTree = "<group>"; };
+		8B1F673D27F89367006FB2F8 /* SEUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEUserAgent.h; sourceTree = "<group>"; };
 		8B60497927F737A60087E6C4 /* SEBrowserViewController+Cookie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SEBrowserViewController+Cookie.h"; sourceTree = "<group>"; };
 		8B60497A27F737A60087E6C4 /* SEBrowserViewController+Cookie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SEBrowserViewController+Cookie.m"; sourceTree = "<group>"; };
 		8B60497C27F737D10087E6C4 /* SEBrowserViewController+Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SEBrowserViewController+Safe.h"; sourceTree = "<group>"; };
@@ -440,6 +443,8 @@
 		8BBE362527F47B940013C6B9 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				8B1F673D27F89367006FB2F8 /* SEUserAgent.h */,
+				8B1F673C27F89367006FB2F8 /* SEUserAgent.mm */,
 				8BBE362627F47B940013C6B9 /* SEURLTool.h */,
 				8BBE362927F47B940013C6B9 /* SEURLTool.m */,
 				8BBE362727F47B940013C6B9 /* SEUtlity.h */,
@@ -623,6 +628,7 @@
 				8BBE35EB27F471450013C6B9 /* SETabManager.m in Sources */,
 				8BBE35F927F471450013C6B9 /* SEBaseNavigationController.m in Sources */,
 				8BBE35E327F471450013C6B9 /* SEWebViewConfiguration.m in Sources */,
+				8B1F673E27F89367006FB2F8 /* SEUserAgent.mm in Sources */,
 				8BBE360F27F471450013C6B9 /* GTMBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
