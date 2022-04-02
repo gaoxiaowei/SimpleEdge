@@ -22,9 +22,9 @@ This is a simple browser prototype based on WKWebview, compatible with iPhone an
 ## Examples
 
 
-iPhone Screen Link: https://pan.baidu.com/s/12vmCAd_qctc4vgoEZ15PxA  password: frt9
+- iPhone Screen Link: https://pan.baidu.com/s/1rNUWx5LQv4AxTWzHCXqXPw  password: egvq
 
-iPad Screen Link: https://pan.baidu.com/s/1rNUWx5LQv4AxTWzHCXqXPw  password: egvq
+- iPad Screen Link: https://pan.baidu.com/s/12vmCAd_qctc4vgoEZ15PxA  password: frt9
 
 ## License
 
