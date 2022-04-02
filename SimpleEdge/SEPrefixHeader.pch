@@ -1,0 +1,26 @@
+//
+//  SEPrefixHeader.pch
+//  SimpleEdge
+//
+//  Created by gaoxiaowei on 2022/3/28.
+//  Copyright © 2022 gaoxiaowei. All rights reserved.
+
+#ifndef SEPrefixHeader_h
+#define SEPrefixHeader_h
+
+#import "SEMacrosDefine.h"
+#import "UIImage+SEUtils.h"
+#import "NSArray+SEUtils.h"
+#import "UIColor+SEUtils.h"
+#import "UIButton+SEUIUtils.h"
+#import "NSString+SEFileType.h"
+#import "UIDevice+Helper.h"
+#import <YYModel/YYModel.h>
+#import <ReactiveObjC/ReactiveObjC.h>
+#import <SDWebImage/SDWebImage.h>
+#import "SETabManager.h"
+#import "NSObject+SESafeArea.h"
+#import "SEBaseNavigationController.h"
+
+
+#endif /* SEPrefixHeader_h */
