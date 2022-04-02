@@ -83,7 +83,8 @@
         if (navigationVC.popoverPresentationController) {
             navigationVC.popoverPresentationController.sourceView = self.view;
             navigationVC.popoverPresentationController.sourceRect = CGRectMake(self.view.frame.size.width/2.0, self.view.frame.size.height/2.0, 1.0, 1.0);
-            navigationVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+                navigationVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+            
         }
     }
     
