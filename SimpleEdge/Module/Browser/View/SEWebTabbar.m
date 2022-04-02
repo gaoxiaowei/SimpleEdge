@@ -78,7 +78,7 @@ NSInteger const kSEWebTabbarActionBaseTag   =10000;
 - (void)updateTabNum:(NSInteger)num{
     UIButton *tabButton = [self.containerView.subviews instanceAtIndex:SEWebTabbarActionTab];
     NSString*imageName;
-    if ([SETabManager shared].getAllTab.count >= 50) {
+    if ([SETabManager shared].getAllTab.count >= kMaxTabCount) {
         imageName = @"square.stack";
     }else{
         imageName =[NSString stringWithFormat:@"%ld.square",num];

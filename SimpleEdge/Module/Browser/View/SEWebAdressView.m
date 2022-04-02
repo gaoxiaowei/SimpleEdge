@@ -118,7 +118,7 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
 
 - (void)updateTabNum:(NSInteger)num{
     NSString*imageName;
-    if ([SETabManager shared].getAllTab.count >= 50) {
+    if ([SETabManager shared].getAllTab.count >= kMaxTabCount) {
         imageName = @"square.stack";
     }else{
         imageName =[NSString stringWithFormat:@"%ld.square",num];
@@ -401,9 +401,11 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
     self.searchBar.hidden=YES;
     self.borderView.hidden=NO;
 }
+
 - (void)searchBar:(SESearchBar *)bar textDidChange:(NSString *)text{
     
 }
+
 - (void)searchBar:(SESearchBar *)bar didClickSearch:(NSString *)text{
     BOOL empty = [text stringByReplacingOccurrencesOfString:@" " withString:@""].length == 0;
     if (empty) {

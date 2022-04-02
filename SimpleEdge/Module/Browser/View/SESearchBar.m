@@ -15,7 +15,7 @@
 @property (nonatomic, strong) UIView                *borderView;
 @property (nonatomic, strong) UIButton              *cancelBtn;
 @property (nonatomic, strong) UITextField           *textField;
-@property (nonatomic, strong) SEInputAccessoryView *inputView;
+@property (nonatomic, strong) SEInputAccessoryView  *inputView;
 @property (nonatomic, strong) UIButton              *clearButton;
 
 @end

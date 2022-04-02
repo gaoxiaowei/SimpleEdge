@@ -59,7 +59,7 @@ return self; \
 
 #define kSENavBarHeight                         44.f
 #define kStatusContentHeight                    0.f
-
+#define kMaxTabCount                            50
 
 #pragma mark -notifaction
 #define kSEViewWillTransitionNotification        @"SEViewWillTransitionNotification"
