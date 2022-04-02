@@ -29,6 +29,7 @@ typedef NS_OPTIONS(NSInteger, SEWebAdressViewAction) {
 @property (nonatomic, weak) id <SEWebAdressViewDelegate> delegate;
 
 - (void)updateTitle:(NSString *)title;
+- (void)restoreTitle;
 - (void)updateLoadingStatus:(BOOL)isLoading;
 - (void)updateProgressBar:(CGFloat)progress;
 

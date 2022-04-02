@@ -167,6 +167,11 @@
                 if (tab == [tabManager getSelectedTab]){
                     [self updateContentByUrl:url];
                 }
+            }else{
+                tab.url = tab.unreachedUrl;
+                if (tab == [tabManager getSelectedTab]){
+                    [self.urlBar restoreTitle];
+                }
                 
             }
         }

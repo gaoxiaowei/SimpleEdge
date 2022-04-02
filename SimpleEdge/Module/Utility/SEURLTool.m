@@ -87,7 +87,8 @@
 }
 
 + (BOOL)isLocalErrorUrl:(NSURL*)url{
-    if([url.absoluteString hasPrefix:@"file:///private/var/"] &&[url.absoluteString hasSuffix:@"/error.html"]){
+    NSString *urlString =url.absoluteString;
+    if(([urlString hasPrefix:@"file:///private/var/"] || [urlString hasPrefix:@"file:///Users/"]) &&[urlString hasSuffix:@"/error.html"]){
         return YES;
     }
     return NO;

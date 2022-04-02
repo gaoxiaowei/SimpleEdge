@@ -94,6 +94,10 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
     }
 }
 
+- (void)restoreTitle{
+    self.addressLab.text = self.searchBar.searchText;
+}
+
 - (void)updateLoadingStatus:(BOOL)isLoading {
     self.isLoading = isLoading;
     NSString *imgName = isLoading ? @"xmark" : @"arrow.clockwise";
