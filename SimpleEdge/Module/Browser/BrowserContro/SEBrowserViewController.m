@@ -147,19 +147,26 @@
     if ([keyPath isEqualToString:kSEWebViewKVOEestimatedProgress]) {
         double progress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
         tab.estimatedProgress = progress;
-        [self updateProgressBar:progress];
+        if (tab == [tabManager getSelectedTab]){
+            [self updateProgressBar:progress];
+        }
         [tab restoreWebView];
     } else if ([keyPath isEqualToString:kSEWebViewKVOLoading]) {
         BOOL isLoding = [change[NSKeyValueChangeNewKey] boolValue];
         tab.loading = isLoding;
-        [self.urlBar updateLoadingStatus:isLoding];
-        
+        if (tab == [tabManager getSelectedTab]){
+            [self.urlBar updateLoadingStatus:isLoding];
+        }
+    
     } else if ([keyPath isEqualToString:kSEWebViewKVOUrl]) {
         NSURL *url = [change objectForKey:NSKeyValueChangeNewKey];
         if([url isKindOfClass:[NSURL class]]){
             if(![SEURLTool isLocalErrorUrl:url]){
                 tab.url = url;
-                [self updateContentByUrl:url];
+                if (tab == [tabManager getSelectedTab]){
+                    [self updateContentByUrl:url];
+                }
+                
             }
         }
         
