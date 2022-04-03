@@ -22,6 +22,25 @@
         [webView loadRequest:navigationAction.request];
         return;
     }
+    //Protocol/URL-Scheme without http(s)
+    if(navigationAction.navigationType ==WKNavigationTypeLinkActivated){
+        NSURL *url = navigationAction.request.URL;
+        if (url.scheme && ![url.scheme hasPrefix:@"http"]){
+            if([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]){
+                [[UIApplication sharedApplication] openURL:navigationAction.request.URL options:@{} completionHandler:nil];
+                decisionHandler(WKNavigationActionPolicyCancel);
+                return;
+            }
+        }
+    }
+    if([[navigationAction.request.URL host] isEqualToString:@"itunes.apple.com"] &&
+       [[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+        if([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]){
+            [[UIApplication sharedApplication] openURL:navigationAction.request.URL options:@{} completionHandler:nil];
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+    }
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
