@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isLandScapeMode;
 + (BOOL)isPadFullScreenMode;
 + (NSString*)sizeClassInt2Str:(UIUserInterfaceSizeClass)sizeClass;
++ (BOOL)isOrientationPortrait;
 @end
 
 NS_ASSUME_NONNULL_END

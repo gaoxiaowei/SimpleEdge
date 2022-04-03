@@ -170,7 +170,8 @@
             }else{
                 tab.url = tab.unreachedUrl;
                 if (tab == [tabManager getSelectedTab]){
-                    [self.urlBar restoreTitle];
+//                    [self.urlBar restoreTitle];
+                    [self updateContentByUrl:tab.url];
                 }
                 
             }
@@ -253,7 +254,7 @@
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(49);
         if (SE_IS_IPAD_DEVICE) {
-            if(![SEUtlity isPadFullScreenMode] ||[self isSizeClassCompactMode]){
+            if(![SEUtlity isPadFullScreenMode]){
                 make.top.equalTo(self.view).offset(self.view.frame.size.height-safeAreaBottom-49);
             }else{
                 make.top.equalTo(self.view).offset(self.view.frame.size.height);
@@ -308,7 +309,7 @@
         }];
         [self.tabBar mas_updateConstraints:^(MASConstraintMaker *make) {
             if (SE_IS_IPAD_DEVICE) {
-                if(![SEUtlity isPadFullScreenMode] || [self isSizeClassCompactMode]){
+                if(![SEUtlity isPadFullScreenMode]){
                     make.top.equalTo(self.view).offset(self.view.frame.size.height-safeAreaBottom-49);
                 }else{
                     make.top.equalTo(self.view).offset(self.view.frame.size.height);
@@ -379,7 +380,7 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    NSLog(@"viewWillTransitionToSize,current %@", [SEUtlity sizeClassInt2Str:self.curHorizontalSizeClass]);
+    NSLog(@"viewWillTransitionToSize,current %@ size:[%@,%@]", [SEUtlity sizeClassInt2Str:self.curHorizontalSizeClass],@(size.width),@(size.height));
     self.view.frame = CGRectMake(0, 0, size.width, size.height);
     [self updateLayout];
     [[NSNotificationCenter defaultCenter] postNotificationName:kSEViewWillTransitionNotification object:nil];

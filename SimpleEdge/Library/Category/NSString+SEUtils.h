@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGSize)sizeForHavingWidth:(CGFloat)width andFont:(UIFont *)font;
 + (NSString *)transformDataToGbkString:(NSData *)data;
-
+- (BOOL)stringIsNull;
+- (BOOL)se_isVaild;
 @end
 
 NS_ASSUME_NONNULL_END

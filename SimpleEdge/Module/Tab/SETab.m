@@ -74,11 +74,15 @@ NSString*const  kScriptReloadFuncName           =@"edge_reload";
 }
 
 - (void)goBack {
-    [self.webView goBack];
+    if([self.webView canGoBack]){
+        [self.webView goBack];
+    }
 }
 
 - (void)goForward {
-    [self.webView goForward];
+    if([self.webView canGoForward]){
+        [self.webView goForward];
+    }
 }
 
 - (void)destroyWebView {

@@ -26,12 +26,15 @@
 + (BOOL)isLandScapeMode{
     return [self rootViewWidth] > [self rootViewHeight];
 }
-
+//分屏(1/2宽): iPad全屏样式
+//分屏(2/3宽): iPad全屏样式
+//分屏(1/3宽): 手机样式
 +(BOOL)isPadFullScreenMode{
-    if(SE_IS_IPAD_DEVICE && self.rootViewWidth < kSE_ScreenWidth){
-        return NO;
+    CGFloat offfset =10.f;
+    if(SE_IS_IPAD_DEVICE && (self.rootViewWidth+offfset >= kSE_ScreenWidth/2)){
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 + (NSString*)sizeClassInt2Str:(UIUserInterfaceSizeClass)sizeClass{
@@ -46,4 +49,11 @@
     }
 }
 
++(BOOL)isOrientationPortrait{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (orientation == UIInterfaceOrientationPortraitUpsideDown || orientation == UIInterfaceOrientationPortrait) {
+        return YES;
+    }
+    return NO;
+}
 @end

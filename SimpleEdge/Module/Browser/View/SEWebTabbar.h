@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateTabNum:(NSInteger)num;
 - (void)updateGoBackStatus:(BOOL)canGoBack;
 - (void)updateGoForwardStatus:(BOOL)canGoForward;
+- (UIButton*)getMultiTabButton;
+- (UIButton*)getShareButton;
 @end
 
 NS_ASSUME_NONNULL_END

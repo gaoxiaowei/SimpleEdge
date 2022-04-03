@@ -20,4 +20,26 @@
     return gbkString;
 }
 
+- (BOOL)stringIsNull{
+    if ((NSNull *)self == [NSNull null])
+    {
+        return YES;
+    }
+    if (self == nil || [self length] == 0)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSString*)se_trim{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (BOOL)se_isVaild{
+    if ([[self se_trim] length] <= 0 || self == (id)[NSNull null]) {
+        return NO;
+    }
+    return YES;
+}
 @end

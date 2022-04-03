@@ -14,6 +14,7 @@
 #import "UIColor+SEUtils.h"
 #import "UIButton+SEUIUtils.h"
 #import "NSString+SEFileType.h"
+#import "NSString+SEUtils.h"
 #import "UIDevice+Helper.h"
 #import <YYModel/YYModel.h>
 #import <ReactiveObjC/ReactiveObjC.h>

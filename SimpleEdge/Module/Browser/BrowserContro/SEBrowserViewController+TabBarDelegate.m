@@ -11,6 +11,7 @@
 #import "SEMutltiTabViewController.h"
 #import "SENavigationController.h"
 #import "SEWebAdressView.h"
+#import "SEWebTabbar.h"
 #import "SEWebTabbarActionProtocol.h"
 #import "SEUtlity.h"
 
@@ -81,10 +82,14 @@
     
     if (SE_IS_IPAD_DEVICE) {
         if (navigationVC.popoverPresentationController) {
-            navigationVC.popoverPresentationController.sourceView = self.view;
-            navigationVC.popoverPresentationController.sourceRect = CGRectMake(self.view.frame.size.width/2.0, self.view.frame.size.height/2.0, 1.0, 1.0);
-                navigationVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
-            
+            if([SEUtlity isPadFullScreenMode]){
+                navigationVC.popoverPresentationController.sourceView = self.urlBar.multiTabButton;
+                navigationVC.popoverPresentationController.sourceRect = self.urlBar.multiTabButton.bounds;
+            }else{
+                navigationVC.popoverPresentationController.sourceView = [self.tabBar getMultiTabButton];
+                navigationVC.popoverPresentationController.sourceRect = [self.tabBar getMultiTabButton].bounds;
+            }
+            navigationVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         }
     }
     
@@ -109,8 +114,13 @@
     };
     if (SE_IS_IPAD_DEVICE) {
         if (activityVC.popoverPresentationController) {
-            activityVC.popoverPresentationController.sourceView = self.view;
-            activityVC.popoverPresentationController.sourceRect = CGRectMake(self.view.frame.size.width/2.0, self.view.frame.size.height/2.0, 1.0, 1.0);
+            if([SEUtlity isPadFullScreenMode]){
+                activityVC.popoverPresentationController.sourceView = self.urlBar.shareButton;
+                activityVC.popoverPresentationController.sourceRect = self.urlBar.shareButton.bounds;
+            }else{
+                activityVC.popoverPresentationController.sourceView = [self.tabBar getShareButton];
+                activityVC.popoverPresentationController.sourceRect = [self.tabBar getShareButton].bounds;
+            }
             activityVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         }
     }

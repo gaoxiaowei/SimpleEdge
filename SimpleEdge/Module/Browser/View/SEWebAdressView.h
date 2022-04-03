@@ -28,6 +28,9 @@ typedef NS_OPTIONS(NSInteger, SEWebAdressViewAction) {
 @property (nonatomic, assign,readonly) BOOL              isLoading;
 @property (nonatomic, weak) id <SEWebAdressViewDelegate> delegate;
 
+@property (nonatomic, strong,readonly) UIButton          *multiTabButton;
+@property (nonatomic, strong,readonly) UIButton          *shareButton;
+
 - (void)updateTitle:(NSString *)title;
 - (void)restoreTitle;
 - (void)updateLoadingStatus:(BOOL)isLoading;

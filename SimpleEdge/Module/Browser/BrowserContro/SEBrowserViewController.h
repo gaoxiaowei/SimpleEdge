@@ -8,9 +8,12 @@
 
 #import "SEBaseViewController.h"
 #import <WebKit/WebKit.h>
+@class SEWebAdressView,SEWebTabbar;
 
 @interface SEBrowserViewController : SEBaseViewController
 <WKNavigationDelegate,WKUIDelegate>
+@property (nonatomic, strong,readonly) SEWebAdressView   *urlBar;
+@property (nonatomic, strong,readonly) SEWebTabbar       *tabBar;
 
 @end
 

@@ -95,7 +95,9 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
 }
 
 - (void)restoreTitle{
-    self.addressLab.text = self.searchBar.searchText;
+    if([self.searchBar.searchText se_isVaild]){
+        self.addressLab.text = self.searchBar.searchText;
+    }
 }
 
 - (void)updateLoadingStatus:(BOOL)isLoading {
@@ -145,7 +147,7 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
     CGFloat borderViewRightMargin =8.0f;
     BOOL isLandscape = [SEUtlity isLandScapeMode];
     if (SE_IS_IPAD_DEVICE) {
-        if([self isSizeClassCompactMode] || ![SEUtlity isPadFullScreenMode]){
+        if(![SEUtlity isPadFullScreenMode]){
             self.backButton.hidden=YES;
             self.forwardButton.hidden=YES;
             self.addTabButton.hidden=YES;

@@ -46,23 +46,29 @@ const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
     [self.topView addSubview:self.rightButton];
     [self.topView addSubview:self.titleLabel];
     [self.topView addSubview:self.lineView];
+
+    CGFloat topOffset =0;
+    if(SE_IS_IPAD_DEVICE && [SEUtlity isPadFullScreenMode]){
+        topOffset=20;
+    }
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self.view);
+        make.top.equalTo(self.view).offset(topOffset);
+        make.left.right.equalTo(self.view);
         make.height.mas_equalTo(44.5);
     }];
     [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
         BOOL isLandscape = [SEUtlity isLandScapeMode];
-        if(isLandscape){
+        if(isLandscape && SE_IS_IPHONE_DEVICE){
             make.left.equalTo(self.topView).offset(kSEMutltiTabButtonLandscapeLRMargin);
         }else{
             make.left.equalTo(self.topView).offset(kSEMutltiTabButtonPortraitLRMargin);
         }
         make.width.height.mas_equalTo(44);
-        make.top.equalTo(self.topView).offset(0);
+        make.centerY.equalTo(self.topView);
     }];
     [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
         BOOL isLandscape = [SEUtlity isLandScapeMode];
-        if(isLandscape){
+        if(isLandscape && SE_IS_IPHONE_DEVICE){
             make.right.equalTo(self.topView).offset(-kSEMutltiTabButtonLandscapeLRMargin);
         }else{
             make.right.equalTo(self.topView).offset(-kSEMutltiTabButtonPortraitLRMargin);
@@ -73,12 +79,13 @@ const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
     [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.rightButton.mas_left).offset(-16);
         make.width.height.top.mas_equalTo(self.leftButton);
+        make.centerY.equalTo(self.topView);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.leftButton.mas_right).offset(5);
         make.right.equalTo(self.rightButton.mas_left).offset(-5);
         make.height.mas_equalTo(44);
-        make.top.equalTo(self.leftButton);
+        make.centerY.equalTo(self.topView);
     }];
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.topView).offset(10);
@@ -95,9 +102,16 @@ const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
 }
 
 -(void)updateLayout{
+    CGFloat topOffset =0;
+    if(SE_IS_IPAD_DEVICE && [SEUtlity isPadFullScreenMode]){
+        topOffset=20;
+    }
+    [self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(topOffset);
+    }];
     [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
         BOOL isLandscape = [SEUtlity isLandScapeMode];
-        if(isLandscape){
+        if(isLandscape && SE_IS_IPHONE_DEVICE){
             make.left.equalTo(self.topView).offset(kSEMutltiTabButtonLandscapeLRMargin);
         }else{
             make.left.equalTo(self.topView).offset(kSEMutltiTabButtonPortraitLRMargin);
@@ -105,7 +119,7 @@ const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
     }];
     [self.rightButton mas_updateConstraints:^(MASConstraintMaker *make) {
         BOOL isLandscape = [SEUtlity isLandScapeMode];
-        if(isLandscape){
+        if(isLandscape && SE_IS_IPHONE_DEVICE){
             make.right.equalTo(self.topView).offset(-kSEMutltiTabButtonLandscapeLRMargin);
         }else{
             make.right.equalTo(self.topView).offset(-kSEMutltiTabButtonPortraitLRMargin);

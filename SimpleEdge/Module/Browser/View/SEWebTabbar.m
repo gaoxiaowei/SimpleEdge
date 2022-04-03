@@ -98,4 +98,11 @@ NSInteger const kSEWebTabbarActionBaseTag   =10000;
     return _containerView;
 }
 
+- (UIButton*)getMultiTabButton{
+    return  [self.containerView.subviews instanceAtIndex:SEWebTabbarActionTab];
+}
+
+- (UIButton*)getShareButton{
+    return  [self.containerView.subviews instanceAtIndex:SEWebTabbarActionShare];
+}
 @end
