@@ -31,7 +31,14 @@
 //分屏(1/3宽): 手机样式
 +(BOOL)isPadFullScreenMode{
     CGFloat offfset =10.f;
-    if(SE_IS_IPAD_DEVICE && (self.rootViewWidth+offfset >= kSE_ScreenWidth/2)){
+    CGFloat screenWidth =kSE_ScreenWidth;
+    if(SE_IS_IPAD_DEVICE && (self.rootViewWidth+offfset >= screenWidth/2)){
+        if([self isOrientationPortrait]){
+            if(self.rootViewWidth < screenWidth){
+                return NO;
+            }
+        }
+    
         return YES;
     }
     return NO;

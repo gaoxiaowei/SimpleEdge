@@ -42,6 +42,8 @@
 
 #pragma mark - init status
 - (void)focusOnTextField {
+    // ipad keyboard NSLayoutConstraint warning
+    // https://developer.apple.com/forums/thread/52961
     [self.textField becomeFirstResponder];
 }
 
@@ -126,8 +128,8 @@
 #pragma mark - layout
 - (void)setupLayout {
     [self.borderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(8);
-        make.right.mas_equalTo(-65);
+        make.left.equalTo(self).offset(8);
+        make.right.equalTo(self).offset(-65);
         make.height.mas_equalTo(38);
         make.centerY.equalTo(self);
     }];

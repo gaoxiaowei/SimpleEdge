@@ -284,7 +284,6 @@
         if(SE_IS_IPAD_DEVICE){
             safeAreaTop =20.f;
         }
-        CGFloat safeAreaBottom = [self se_safeArea].bottom;
         [self.urlBar mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(safeAreaTop);
         }];
@@ -294,9 +293,8 @@
         }];
         
         [self.webViewContainer mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view.mas_bottom).offset(-safeAreaBottom);
+            make.bottom.equalTo(self.tabBar.mas_top);
         }];
-        
         
     }else{
         CGFloat safeAreaTop = [self getSafeAreaTop];
