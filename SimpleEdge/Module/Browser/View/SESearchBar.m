@@ -7,7 +7,6 @@
 //
 
 #import "SESearchBar.h"
-#import <Masonry/Masonry.h>
 #import "SEInputAccessoryView.h"
 #import "SEURLTool.h"
 

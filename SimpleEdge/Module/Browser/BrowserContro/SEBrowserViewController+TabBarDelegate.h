@@ -10,4 +10,5 @@
 
 @interface SEBrowserViewController (TabBarDelegate)
 
+-(void)updateLayoutPopoverViewIfNeed;
 @end

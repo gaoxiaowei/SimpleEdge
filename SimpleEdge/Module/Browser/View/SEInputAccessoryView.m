@@ -7,7 +7,6 @@
 //
 
 #import "SEInputAccessoryView.h"
-#import <Masonry/Masonry.h>
 #import "SEUtlity.h"
 
 @interface SEInputAccessoryView ()

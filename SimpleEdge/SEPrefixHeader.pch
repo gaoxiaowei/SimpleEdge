@@ -22,6 +22,6 @@
 #import "SETabManager.h"
 #import "NSObject+SESafeArea.h"
 #import "SEBaseNavigationController.h"
-
+#import <Masonry/Masonry.h>
 
 #endif /* SEPrefixHeader_h */

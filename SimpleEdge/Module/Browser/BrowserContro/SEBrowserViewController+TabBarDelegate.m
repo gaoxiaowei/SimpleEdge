@@ -15,6 +15,8 @@
 #import "SEWebTabbarActionProtocol.h"
 #import "SEUtlity.h"
 
+@interface  SEBrowserViewController(TabBarDelegate)
+@end
 @implementation SEBrowserViewController (TabBarDelegate)
 
 - (void)tabBarButtonAction:(SEWebTabbarAction)action {
@@ -79,8 +81,13 @@
     SEMutltiTabViewController*vc =[[SEMutltiTabViewController alloc]init];
     SENavigationController *navigationVC = [[SENavigationController alloc] initWithRootViewController:vc];
     navigationVC.modalPresentationStyle = UIModalPresentationPopover;
-    
     if (SE_IS_IPAD_DEVICE) {
+        @weakify(self)
+        vc.dismissBlock = ^{
+            @strongify(self)
+            [self setMutltiTabViewController:nil];
+        };
+        [self setMutltiTabViewController:vc];
         if (navigationVC.popoverPresentationController) {
             if([SEUtlity isPadFullScreenMode]){
                 navigationVC.popoverPresentationController.sourceView = self.urlBar.multiTabButton;
@@ -111,8 +118,12 @@
         if (completed) {
             completion(completed, activityError);
         }
+        if (SE_IS_IPAD_DEVICE){
+            [self setSystemShareViewController:nil];
+        }
     };
     if (SE_IS_IPAD_DEVICE) {
+        [self setSystemShareViewController:activityVC];
         if (activityVC.popoverPresentationController) {
             if([SEUtlity isPadFullScreenMode]){
                 activityVC.popoverPresentationController.sourceView = self.urlBar.shareButton;
@@ -125,6 +136,46 @@
         }
     }
     [self presentViewController:activityVC animated:YES completion:nil];
+}
+//
+-(void)updateLayoutPopoverViewIfNeed{
+    if (SE_IS_IPAD_DEVICE) {
+        if ([self mutltiTabViewController]!=nil) {
+            if([SEUtlity isPadFullScreenMode]){
+                [self mutltiTabViewController].popoverPresentationController.sourceView = self.urlBar.multiTabButton;
+                [self mutltiTabViewController].popoverPresentationController.sourceRect = self.urlBar.multiTabButton.bounds;
+            }else{
+                [self mutltiTabViewController].popoverPresentationController.sourceView = [self.tabBar getMultiTabButton];
+                [self mutltiTabViewController].popoverPresentationController.sourceRect = [self.tabBar getMultiTabButton].bounds;
+            }
+        }
+        if([self systemShareViewController]!=nil){
+            if([SEUtlity isPadFullScreenMode]){
+                [self systemShareViewController].popoverPresentationController.sourceView = self.urlBar.shareButton;
+                [self systemShareViewController].popoverPresentationController.sourceRect = self.urlBar.shareButton.bounds;
+            }else{
+                [self systemShareViewController].popoverPresentationController.sourceView = [self.tabBar getShareButton];
+                [self systemShareViewController].popoverPresentationController.sourceRect = [self.tabBar getShareButton].bounds;
+            }
+        }
+    }
+}
+
+#pragma mark - extend property
+- (void)setMutltiTabViewController:(SEMutltiTabViewController *)vc {
+    objc_setAssociatedObject(self, @selector(mutltiTabViewController),vc,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (SEMutltiTabViewController *)mutltiTabViewController {
+    return objc_getAssociatedObject(self, @selector(mutltiTabViewController));
+}
+
+- (void)setSystemShareViewController:(UIActivityViewController *)vc {
+    objc_setAssociatedObject(self, @selector(systemShareViewController),vc,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIActivityViewController *)systemShareViewController {
+    return objc_getAssociatedObject(self, @selector(systemShareViewController));
 }
 
 @end

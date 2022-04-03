@@ -7,7 +7,6 @@
 //
 
 #import "SEMutltiTabViewController.h"
-#import <Masonry/Masonry.h>
 #import "SETabTableViewCell.h"
 #import "SETab.h"
 #import "SETabManager.h"
@@ -15,6 +14,7 @@
 
 const NSInteger kSEMutltiTabButtonPortraitLRMargin  =8;
 const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
+const NSInteger kSEMutltiTabTopViewHeight           =56.5;
 
 @interface SEMutltiTabViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView              *tableView;
@@ -38,6 +38,12 @@ const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
     [self.tableView reloadData];
 
 }
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    SAFE_BLOCK(self.dismissBlock);
+}
+
 #pragma mark -layout
 -(void)setupViews{
     [self.view addSubview:self.topView];
@@ -54,7 +60,7 @@ const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(topOffset);
         make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(44.5);
+        make.height.mas_equalTo(kSEMutltiTabTopViewHeight);
     }];
     [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
         BOOL isLandscape = [SEUtlity isLandScapeMode];
@@ -257,7 +263,7 @@ const NSInteger kSEMutltiTabButtonLandscapeLRMargin =32;
 -(UILabel*)titleLabel{
     if(!_titleLabel){
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+        _titleLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightBold];
         _titleLabel.numberOfLines = 1;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = SE_HEXCOLOR(0x222222);

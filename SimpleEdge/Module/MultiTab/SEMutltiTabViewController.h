@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SEMutltiTabViewController : SEBaseNavigationController
 
+@property(nonatomic,copy)dispatch_block_t dismissBlock;
 @end
 
 NS_ASSUME_NONNULL_END

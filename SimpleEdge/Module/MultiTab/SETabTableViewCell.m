@@ -7,7 +7,6 @@
 //
 
 #import "SETabTableViewCell.h"
-#import <Masonry/Masonry.h>
 
 @interface SETabTableViewCell()
 @property(nonatomic,strong) UILabel     *titleLabel;

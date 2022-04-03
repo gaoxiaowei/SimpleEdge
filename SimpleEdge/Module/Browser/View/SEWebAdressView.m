@@ -12,13 +12,11 @@
 #import "SEURLTool.h"
 #import "NSString+Encode.h"
 #import "SEUtlity.h"
-#import <Masonry/Masonry.h>
 #import "SEControllerHelper.h"
 
 NSInteger const kSEWebAdressViewBtnWidth    =32.f;
 NSInteger const kSEWebAdressViewBtnHeight   =32.f;
 NSInteger const kSEWebAdressViewBtnMagrin   =16.f;
-NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
 
 @interface SEWebAdressView ()<SESearchBarDelegate>
 @property (nonatomic, assign) BOOL                  isLoading;
@@ -142,9 +140,10 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
 }
 
 #pragma mark - layout
--(void)preLayout:(void(^)(CGFloat borderViewLeftMargin,CGFloat borderViewRightMargin))completion{
+-(void)preLayout:(void(^)(CGFloat borderViewLeftMargin,CGFloat borderViewRightMargin,CGFloat webAdressViewBtnLRMargin))completion{
     CGFloat borderViewLeftMargin  =8.0f;
     CGFloat borderViewRightMargin =8.0f;
+    CGFloat webAdressViewBtnLRMargin =[self calButtonLRMargin];
     BOOL isLandscape = [SEUtlity isLandScapeMode];
     if (SE_IS_IPAD_DEVICE) {
         if(![SEUtlity isPadFullScreenMode]){
@@ -154,8 +153,8 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
             self.multiTabButton.hidden=YES;
             self.shareButton.hidden=YES;
         }else{
-            borderViewLeftMargin =kSEWebAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*2;
-            borderViewRightMargin =kSEWebAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3+kSEWebAdressViewBtnMagrin;
+            borderViewLeftMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*2;
+            borderViewRightMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3+kSEWebAdressViewBtnMagrin;
             self.backButton.hidden=NO;
             self.forwardButton.hidden=NO;
             self.addTabButton.hidden=NO;
@@ -165,8 +164,8 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
     }else{
         //横屏
         if (isLandscape){
-            borderViewLeftMargin =kSEWebAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*2;
-            borderViewRightMargin =kSEWebAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3+kSEWebAdressViewBtnMagrin;
+            borderViewLeftMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*2;
+            borderViewRightMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3+kSEWebAdressViewBtnMagrin;
             self.backButton.hidden=NO;
             self.forwardButton.hidden=NO;
             self.addTabButton.hidden=NO;
@@ -180,11 +179,11 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
             self.shareButton.hidden=YES;
         }
     }
-    SAFE_BLOCK(completion,borderViewLeftMargin,borderViewRightMargin);
+    SAFE_BLOCK(completion,borderViewLeftMargin,borderViewRightMargin,webAdressViewBtnLRMargin);
 }
 
 - (void)setupLayout {
-    [self preLayout:^(CGFloat borderViewLeftMargin, CGFloat borderViewRightMargin) {
+    [self preLayout:^(CGFloat borderViewLeftMargin, CGFloat borderViewRightMargin,CGFloat webAdressViewBtnLRMargin) {
         [self.borderView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(borderViewLeftMargin);
             make.right.equalTo(self).offset(-borderViewRightMargin);
@@ -222,7 +221,7 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
             make.width.mas_equalTo(kSEWebAdressViewBtnWidth);
             make.height.mas_equalTo(kSEWebAdressViewBtnHeight);
             make.centerY.equalTo(self);
-            make.left.equalTo(self).offset(kSEWebAdressViewBtnLRMargin);
+            make.left.equalTo(self).offset(webAdressViewBtnLRMargin);
         }];
         [self.forwardButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.backButton.mas_right).offset(kSEWebAdressViewBtnMagrin);
@@ -231,19 +230,19 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
         }];
         
         [self.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self).offset(-kSEWebAdressViewBtnLRMargin);
+            make.right.equalTo(self).offset(-webAdressViewBtnLRMargin);
             make.width.height.equalTo(self.backButton);
             make.centerY.equalTo(self);
         }];
         
         [self.multiTabButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.shareButton.mas_left).offset(-kSEWebAdressViewBtnMagrin);
+            make.right.equalTo(self.shareButton.mas_left).offset(-webAdressViewBtnLRMargin);
             make.width.height.equalTo(self.backButton);
             make.centerY.equalTo(self);
         }];
         
         [self.addTabButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.multiTabButton.mas_left).offset(-kSEWebAdressViewBtnMagrin);
+            make.right.equalTo(self.multiTabButton.mas_left).offset(-webAdressViewBtnLRMargin);
             make.width.height.equalTo(self.backButton);
             make.centerY.equalTo(self);
         }];
@@ -253,7 +252,7 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
 }
 
 - (void)updateLayout {
-    [self preLayout:^(CGFloat borderViewLeftMargin, CGFloat borderViewRightMargin) {
+    [self preLayout:^(CGFloat borderViewLeftMargin, CGFloat borderViewRightMargin,CGFloat webAdressViewBtnLRMargin) {
         [self.borderView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(borderViewLeftMargin);
             make.right.equalTo(self).offset(-borderViewRightMargin);
@@ -439,6 +438,13 @@ NSInteger const kSEWebAdressViewBtnLRMargin =32.f;
         return [vc isSizeClassCompactMode];
     }
     return currentVC.traitCollection.horizontalSizeClass ==UIUserInterfaceSizeClassCompact;
+}
+
+-(CGFloat)calButtonLRMargin{
+    if(SE_IS_IPHONE_DEVICE && [self se_safeArea].bottom>0){
+        return 32.f;
+    }
+    return 16.f;
 }
 
 @end

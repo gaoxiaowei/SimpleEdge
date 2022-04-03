@@ -7,7 +7,6 @@
 //
 
 #import "SEWebTabbar.h"
-#import <Masonry/Masonry.h>
 
 NSInteger const kSEWebTabbarActionBaseTag   =10000;
 

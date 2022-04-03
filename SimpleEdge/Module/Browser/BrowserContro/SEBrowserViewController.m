@@ -8,7 +8,7 @@
 
 //vc
 #import "SEBrowserViewController.h"
-#import <Masonry/Masonry.h>
+#import "SEBrowserViewController+TabBarDelegate.h"
 
 //view
 #import "SEWebAdressView.h"
@@ -381,6 +381,7 @@
     NSLog(@"viewWillTransitionToSize,current %@ size:[%@,%@]", [SEUtlity sizeClassInt2Str:self.curHorizontalSizeClass],@(size.width),@(size.height));
     self.view.frame = CGRectMake(0, 0, size.width, size.height);
     [self updateLayout];
+    [self updateLayoutPopoverViewIfNeed];
     [[NSNotificationCenter defaultCenter] postNotificationName:kSEViewWillTransitionNotification object:nil];
 }
 
