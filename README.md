@@ -14,7 +14,7 @@ To run the example project, clone the repo, and run pod install from the SimpleE
 
 This is a simple browser prototype based on WKWebview, compatible with iPhone and iPad devices.
 
-- Support multi-label management of web pages
+- support multi tab management of web pages
 - support portrait and landscape display
 - support iPad full screen and split screen display
 
