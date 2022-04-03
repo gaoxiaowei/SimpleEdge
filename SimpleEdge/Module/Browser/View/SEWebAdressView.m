@@ -154,7 +154,7 @@ NSInteger const kSEWebAdressViewBtnMagrin   =16.f;
             self.shareButton.hidden=YES;
         }else{
             borderViewLeftMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*2;
-            borderViewRightMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3+kSEWebAdressViewBtnMagrin;
+            borderViewRightMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3;
             self.backButton.hidden=NO;
             self.forwardButton.hidden=NO;
             self.addTabButton.hidden=NO;
@@ -165,7 +165,7 @@ NSInteger const kSEWebAdressViewBtnMagrin   =16.f;
         //横屏
         if (isLandscape){
             borderViewLeftMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*2;
-            borderViewRightMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3+kSEWebAdressViewBtnMagrin;
+            borderViewRightMargin =webAdressViewBtnLRMargin+(kSEWebAdressViewBtnWidth+kSEWebAdressViewBtnMagrin)*3;
             self.backButton.hidden=NO;
             self.forwardButton.hidden=NO;
             self.addTabButton.hidden=NO;
@@ -236,13 +236,13 @@ NSInteger const kSEWebAdressViewBtnMagrin   =16.f;
         }];
         
         [self.multiTabButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.shareButton.mas_left).offset(-webAdressViewBtnLRMargin);
+            make.right.equalTo(self.shareButton.mas_left).offset(-kSEWebAdressViewBtnMagrin);
             make.width.height.equalTo(self.backButton);
             make.centerY.equalTo(self);
         }];
         
         [self.addTabButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.multiTabButton.mas_left).offset(-webAdressViewBtnLRMargin);
+            make.right.equalTo(self.multiTabButton.mas_left).offset(-kSEWebAdressViewBtnMagrin);
             make.width.height.equalTo(self.backButton);
             make.centerY.equalTo(self);
         }];
