@@ -40,7 +40,7 @@ const NSInteger kSEMutltiTabTopViewHeight           =56.5;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidAppear:animated];
+    [super viewDidDisappear:animated];
     SAFE_BLOCK(self.dismissBlock);
 }
 
