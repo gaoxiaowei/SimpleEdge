@@ -5,13 +5,13 @@
 //  Created by gaoxiaowei on 2022/3/28.
 //  Copyright © 2022 gaoxiaowei. All rights reserved.
 
-#ifndef QHMacrosDefine_h
-#define QHMacrosDefine_h
+#ifndef SEMacrosDefine_h
+#define SEMacrosDefine_h
 
 //HomeUrl
 #define kSEHomeUrl @"https://www.bing.com"
 //Default Search Engine
-#define kSESearchEngineUrl @"https://cn.bing.com/search"
+#define kSESearchEngineUrl @"https://www.bing.com/search"
 
 #define SE_IS_IPHONE_DEVICE    (UIUserInterfaceIdiomPhone == [[UIDevice currentDevice] userInterfaceIdiom])
 #define SE_IS_IPAD_DEVICE      (UIUserInterfaceIdiomPad == [[UIDevice currentDevice] userInterfaceIdiom])
