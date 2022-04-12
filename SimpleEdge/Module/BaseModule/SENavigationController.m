@@ -1,5 +1,5 @@
 //
-//  GLNavigationController.m
+//  SENavigationController.m
 //  SimpleEdge
 //
 //  Created by gaoxiaowei on 2022/3/28.
